@@ -14,7 +14,10 @@ function App() {
 			) : (
 				<div className="start-screen">
 					<h1>Quizzical</h1>
-					<button className="start" onClick={() => setShowQuiz(true)}>
+					<button
+						className="start-btn"
+						onClick={() => setShowQuiz(true)}
+					>
 						Start quiz
 					</button>
 				</div>

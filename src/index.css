@@ -17,6 +17,14 @@ main {
 	width: 550px;
 	height: 550px;
 	margin-top: 60px;
+	display: flex;
+	flex-direction: column;
+	justify-content: start;
+	align-items: center;
+}
+
+.start-screen {
+	margin-top: 180px;
 }
 
 /* Typography */
@@ -25,4 +33,44 @@ h1 {
 	font-family: 'Karla', sans-serif;
 	font-weight: 700px;
 	font-size: 2rem;
+}
+
+h3 {
+	color: #293264;
+	text-align: center;
+	font-family: Inter;
+	font-size: 1.1rem;
+	font-weight: 700;
+}
+
+/* Buttons */
+
+.start-btn {
+	font-family: Inter;
+	font-size: 1rem;
+	font-weight: 500;
+	border: none;
+	border-radius: 15px;
+	padding: 0.75em 2em;
+	margin-top: 30px;
+	background: #4d5b9e;
+	color: #f5f7fb;
+}
+
+.footer-btn {
+	font-family: Inter;
+	font-size: 0.75rem;
+	font-weight: 600;
+	border: none;
+	border-radius: 8px;
+	padding: 0.75em 2em;
+	background: #4d5b9e;
+	color: #f5f7fb;
+}
+
+.score-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 1.4em;
 }
