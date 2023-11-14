@@ -4,4 +4,25 @@
 
 body {
 	margin: 0;
+	background: #1c1c1c;
+	color: #293264;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+main {
+	background: #f5f7fb;
+	width: 550px;
+	height: 550px;
+	margin-top: 60px;
+}
+
+/* Typography */
+
+h1 {
+	font-family: 'Karla', sans-serif;
+	font-weight: 700px;
+	font-size: 2rem;
 }
