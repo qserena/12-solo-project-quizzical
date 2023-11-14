@@ -17,14 +17,19 @@ main {
 	width: 550px;
 	height: 550px;
 	margin-top: 60px;
-	display: flex;
-	flex-direction: column;
-	justify-content: start;
-	align-items: center;
 }
 
 .start-screen {
-	margin-top: 180px;
+	width: 100%;
+	height: 100%;
+	background-image: url('./assets/blob-blue-large.svg'),
+		url('./assets/blob-lemony.svg');
+	background-position: bottom left, top right;
+	background-repeat: no-repeat;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 
 /* Typography */
@@ -39,33 +44,48 @@ h3 {
 	color: #293264;
 	text-align: center;
 	font-family: Inter;
-	font-size: 1.1rem;
+	font-size: 1rem;
 	font-weight: 700;
 }
 
 /* Buttons */
 
-.start-btn {
+.blue-btn {
 	font-family: Inter;
+	border: none;
+	background: #4d5b9e;
+	color: #f5f7fb;
+	cursor: pointer;
+}
+
+.start-btn {
 	font-size: 1rem;
 	font-weight: 500;
-	border: none;
 	border-radius: 15px;
 	padding: 0.75em 2em;
 	margin-top: 30px;
-	background: #4d5b9e;
-	color: #f5f7fb;
+	margin-bottom: 100px;
 }
 
 .footer-btn {
-	font-family: Inter;
 	font-size: 0.75rem;
 	font-weight: 600;
-	border: none;
 	border-radius: 8px;
-	padding: 0.75em 2em;
-	background: #4d5b9e;
-	color: #f5f7fb;
+	padding: 0.9em 2em;
+}
+
+/* Quiz */
+
+.quiz--container {
+	width: 100%;
+	height: 100%;
+	background-image: url('./assets/blob-blue-small.svg'),
+		url('./assets/blob-lemony.svg');
+	background-position: bottom left, top right;
+	background-repeat: no-repeat;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
 }
 
 .score-container {
@@ -73,4 +93,8 @@ h3 {
 	justify-content: center;
 	align-items: center;
 	gap: 1.4em;
+}
+
+.quiz--footer {
+	padding-bottom: 2em;
 }

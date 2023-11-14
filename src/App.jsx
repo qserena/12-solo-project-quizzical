@@ -15,7 +15,7 @@ function App() {
 				<div className="start-screen">
 					<h1>Quizzical</h1>
 					<button
-						className="start-btn"
+						className="blue-btn start-btn"
 						onClick={() => setShowQuiz(true)}
 					>
 						Start quiz
