@@ -1,7 +1,26 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
-export default function Quiz(props) {
+export default function Quiz() {
 	const [checkResult, setCheckResult] = useState(false)
+
+	useEffect(() => {
+		let ignore = false
+
+		fetch(
+			'https://opentdb.com/api.php?amount=10&category=9&difficulty=medium&type=multiple'
+		)
+			.then((res) => res.json())
+			.then((data) => {
+				if (!ignore) {
+					console.log(data)
+				}
+			})
+
+		return () => {
+			ignore = true
+		}
+	}, [])
+
 	function startNewQuiz() {
 		setCheckResult(false)
 	}
