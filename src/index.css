@@ -99,6 +99,27 @@ h3 {
 	margin: 10px 75px 10px 75px;
 }
 
+.buttons {
+	display: flex;
+	justify-content: start;
+	align-items: center;
+	gap: 12px;
+}
+
+.answer-btn {
+	min-width: 50px;
+	background: #f5f7fb;
+	border-radius: 0.6em;
+	border: 0.05em solid #4d5b9e;
+	color: #293264;
+	text-align: center;
+	font-family: Inter;
+	font-size: 0.7rem;
+	font-weight: 500;
+	padding: 0.3em 1em;
+	cursor: pointer;
+}
+
 hr {
 	height: 0.8px;
 	border: none;
