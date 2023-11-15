@@ -40,6 +40,13 @@ h1 {
 	font-size: 2rem;
 }
 
+h2 {
+	color: #293264;
+	font-family: 'Karla', sans-serif;
+	font-weight: 700px;
+	font-size: 1rem;
+}
+
 h3 {
 	color: #293264;
 	text-align: center;
