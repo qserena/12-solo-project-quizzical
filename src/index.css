@@ -95,6 +95,16 @@ h3 {
 	justify-content: flex-end;
 }
 
+.quiz--inner-container {
+	margin: 10px 75px 10px 75px;
+}
+
+hr {
+	height: 0.8px;
+	border: none;
+	background: #dbdef0;
+}
+
 .score-container {
 	display: flex;
 	justify-content: center;

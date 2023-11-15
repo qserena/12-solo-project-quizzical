@@ -20,7 +20,7 @@ export default function Quiz() {
 						// setQuestions(data.results)
 						// composeQuestions(data.results)
 						composeQuestions(data.data.memes)
-						console.log(data)
+						//console.log(data)
 					}
 				})
 		}
@@ -35,7 +35,7 @@ export default function Quiz() {
 		for (let i = 0; i < 5; i++) {
 			newArr[i] = {
 				...results[i],
-				id: nanoid(),
+				key: nanoid(),
 			}
 		}
 		console.log(newArr)
@@ -56,26 +56,28 @@ export default function Quiz() {
 
 	return (
 		<div className="quiz--container">
-			<div className="quiz--questions">{questionElements}</div>
-			<div className="quiz--footer">
-				{checkResult ? (
-					<div className="score-container">
-						<h3>You scored 3/5 correct answers</h3>
+			<div className="quiz--inner-container">
+				<div className="quiz--questions">{questionElements}</div>
+				<div className="quiz--footer">
+					{checkResult ? (
+						<div className="score-container">
+							<h3>You scored 3/5 correct answers</h3>
+							<button
+								className="blue-btn footer-btn"
+								onClick={startNewQuiz}
+							>
+								Play again
+							</button>
+						</div>
+					) : (
 						<button
 							className="blue-btn footer-btn"
-							onClick={startNewQuiz}
+							onClick={() => setCheckResult(true)}
 						>
-							Play again
+							Check answers
 						</button>
-					</div>
-				) : (
-					<button
-						className="blue-btn footer-btn"
-						onClick={() => setCheckResult(true)}
-					>
-						Check answers
-					</button>
-				)}
+					)}
+				</div>
 			</div>
 		</div>
 	)
