@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import he from 'he'
 import { nanoid } from 'nanoid'
+import Question from './Question'
 
 export default function Quiz() {
 	const [checkResult, setCheckResult] = useState(false)
@@ -47,11 +48,7 @@ export default function Quiz() {
 	}
 
 	const questionElements = questions.map((question) => (
-		<div>
-			{/* <h2>{he.decode(question.question)}</h2> */}
-			<h2>{he.decode(question.name)}</h2>
-			<hr />
-		</div>
+		<Question question={question} />
 	))
 
 	return (
