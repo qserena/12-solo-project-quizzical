@@ -65,6 +65,11 @@ h3 {
 	cursor: pointer;
 }
 
+.blue-btn:hover,
+.blue-btn:active {
+	background: #384888;
+}
+
 .start-btn {
 	font-size: 1rem;
 	font-weight: 500;
@@ -99,6 +104,10 @@ h3 {
 	margin: 10px 75px 10px 75px;
 }
 
+.quiz--questions {
+	text-align: left;
+}
+
 .buttons {
 	display: flex;
 	justify-content: start;
@@ -107,17 +116,22 @@ h3 {
 }
 
 .answer-btn {
-	min-width: 50px;
+	min-width: 60px;
 	background: #f5f7fb;
-	border-radius: 0.6em;
+	border-radius: 0.7em;
 	border: 0.05em solid #4d5b9e;
 	color: #293264;
 	text-align: center;
 	font-family: Inter;
 	font-size: 0.7rem;
 	font-weight: 500;
-	padding: 0.3em 1em;
+	padding: 0.25em 1em;
 	cursor: pointer;
+}
+
+.answer-btn:hover,
+.answer-btn:active {
+	background: #deebf8;
 }
 
 hr {
@@ -135,4 +149,9 @@ hr {
 
 .quiz--footer {
 	padding-bottom: 2em;
+}
+
+.btn-selected {
+	background-color: '#D6DBF5';
+	border: 'none';
 }

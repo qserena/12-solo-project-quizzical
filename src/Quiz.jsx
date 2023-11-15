@@ -6,6 +6,7 @@ import Question from './Question'
 export default function Quiz() {
 	const [checkResult, setCheckResult] = useState(false)
 	const [questions, setQuestions] = useState([])
+	const [selectedAnswers, setSelectedAnswers] = useState([])
 
 	useEffect(() => {
 		let ignore = false
@@ -33,22 +34,43 @@ export default function Quiz() {
 
 	function composeQuestions(results) {
 		let newArr = []
-		for (let i = 0; i < 5; i++) {
+		const answerz = [
+			{ id: 1, answer: 'Italy' },
+			{ id: 2, answer: 'Portugal' },
+			{ id: 3, answer: 'Mexico' },
+			{ id: 4, answer: 'France' },
+		]
+		for (let i = 0; i < 1; i++) {
 			newArr[i] = {
 				...results[i],
 				key: nanoid(),
+				answers: answerz,
 			}
 		}
 		console.log(newArr)
 		setQuestions(newArr)
+		const selectedArr = newArr.map((item) => ({
+			key: item.key,
+			id: 0,
+		}))
+		setSelectedAnswers(selectedArr)
 	}
 
 	function startNewQuiz() {
 		setCheckResult(false)
 	}
 
+	function setSelected(key, selectedAnswerId) {
+		console.log(key + ' ' + selectedAnswerId)
+	}
+
 	const questionElements = questions.map((question) => (
-		<Question question={question} />
+		<Question
+			key={question.key}
+			question={question}
+			answers={question.answers}
+			setSelected={(id) => setSelected(question.key, id)}
+		/>
 	))
 
 	return (

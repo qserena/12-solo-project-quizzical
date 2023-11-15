@@ -3,19 +3,72 @@ import he from 'he'
 
 export default function Question(props) {
 	const [selectedAnswerId, setSelectedAnswerId] = useState(0)
+	const [selectedStates, setSelectedStates] = useState([])
 
-	const answers = [
-		{ answer: 'Italy' },
-		{ answer: 'Portugal' },
-		{ answer: 'Mexico' },
-		{ answer: 'France' },
-	]
+	// useEffect(() => {
+	// 	const btn = document.getElementById(
+	// 		`btn-${props.question.key}-${selectedAnswerId}`
+	// 	)
+	// 	console.log(btn)
+	// 	const styles = {
+	// 		backgroundColor: '#D6DBF5',
+	// 		border: 'none',
+	// 	}
+	// 	if (btn) {
+	// 		btn.style = styles
+	// 		btn.classList.add('selected')
+	// 	}
+	// }, [selectedAnswerId])
+
 	useEffect(() => {
-		const a = 0
+		const btn = document.getElementById(
+			`btn-${props.question.key}-${selectedAnswerId}`
+		)
+		console.log(btn)
+		const styles = {
+			backgroundColor: '#D6DBF5',
+			border: 'none',
+		}
+		if (btn) {
+			btn.style = styles
+			btn.classList.add('btn-selected')
+		}
 	}, [selectedAnswerId])
 
-	const buttons = answers.map((ans) => (
-		<button className="answer-btn">{ans.answer}</button>
+	function toggleSelected(id) {
+		console.log('id = ' + id)
+		setSelectedAnswerId(id)
+		props.setSelected(id)
+		// const btn = document.getElementById(
+		// 	`btn-${props.question.key}-${selectedAnswerId}`
+		// )
+		// console.log(btn)
+		// const styles = {
+		// 	backgroundColor: '#D6DBF5',
+		// 	border: 'none',
+		// }
+		// if (btn) {
+		// 	btn.style = styles
+		// 	btn.classList.add('selected')
+		// }
+	}
+
+	console.log(props.answers)
+
+	const buttons = props.answers.map((ans) => (
+		<button
+			key={ans.id}
+			className={
+				ans.id === selectedAnswerId
+					? 'answer-btn btn-selected'
+					: 'answer-btn'
+			}
+			style={{ backgroundColor: '#D6DBF5', border: 'none' }}
+			id={`btn-${props.question.key}-${ans.id}`}
+			onClick={() => toggleSelected(ans.id)}
+		>
+			{ans.answer}
+		</button>
 	))
 
 	return (
