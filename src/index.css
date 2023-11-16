@@ -14,8 +14,10 @@ body {
 
 main {
 	background: #f5f7fb;
-	width: 550px;
-	height: 550px;
+	width: 600px;
+	/* min-width: 550px;
+	max-width: 650px; */
+	height: 600px;
 	margin-top: 60px;
 }
 
@@ -114,6 +116,7 @@ h3 {
 	display: flex;
 	justify-content: start;
 	align-items: center;
+	flex-wrap: wrap;
 	gap: 12px;
 }
 
