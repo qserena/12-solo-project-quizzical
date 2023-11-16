@@ -13,29 +13,23 @@ export default function Quiz() {
 
 		if (!checkResult) {
 			// fetch(
-
 			// 	'https://opentdb.com/api.php?amount=5&category=9&difficulty=medium&type=multiple'
 			// )
+			// 	.then((response) => response.json())
+			// 	.then((data) => {
+			// 		console.log(data)
+			// 		if (!ignore) {
+			// 			composeQuestions(data.results)
+			// 		}
+			// 	})
+
 			fetch('https://api.imgflip.com/get_memes')
 				.then((response) => response.json())
 				.then((result) => {
 					if (!ignore) {
-						// setQuestions(data.results)
 						composeQuestions(result.data.memes)
-						//console.log(result.data.memes)
 					}
 				})
-			// .then((res) => {
-			// 	//console.log(res)
-			// 	res.json()
-			// })
-			// .then((data) => {
-			// 	if (!ignore) {
-			// 		// setQuestions(data.results)
-			// 		//composeQuestions(data.results)
-			// 		console.log(data)
-			// 	}
-			// })
 		}
 
 		return () => {
@@ -56,6 +50,7 @@ export default function Quiz() {
 				...results[i],
 				key: nanoid(),
 				answers: answerz,
+				result: false,
 			}
 		}
 		console.log(newArr)
@@ -68,12 +63,23 @@ export default function Quiz() {
 		// setSelectedAnswers(selectedArr)
 	}
 
+	function checkResults() {
+		setCheckResult(true)
+		for (let q of questions) {
+			console.log(q.result)
+		}
+	}
+
 	function startNewQuiz() {
 		setCheckResult(false)
 	}
 
 	function setSelected(key, selectedAnswerId) {
 		console.log(key + ' ' + selectedAnswerId)
+	}
+
+	function setResult(id, result) {
+		console.log('id: ' + id + ' result: ' + result)
 	}
 
 	const questionElements = questions.map((question) => (
@@ -88,6 +94,8 @@ export default function Quiz() {
 			key={question.key}
 			question={question}
 			answers={question.answers}
+			result={question.result}
+			setResult={(result) => setResult(question.id, result)}
 		/>
 	))
 
@@ -110,7 +118,7 @@ export default function Quiz() {
 						<button
 							className="blue-btn footer-btn"
 							id="check-answers-btn"
-							onClick={() => setCheckResult(true)}
+							onClick={checkResults}
 						>
 							Check answers
 						</button>

@@ -22,10 +22,11 @@ export default function Question(props) {
 	// }, [selectedAnswerId])
 
 	useEffect(() => {
-		const btn = document.getElementById(
-			`btn-${props.question.key}-${selectedAnswerId}`
-		)
-		console.log(btn)
+		setResult(selectedAnswerId === 2)
+		// const btn = document.getElementById(
+		// 	`btn-${props.question.key}-${selectedAnswerId}`
+		// )
+		// console.log(btn)
 		// const styles = {
 		// 	backgroundColor: '#D6DBF5',
 		// 	border: 'none',
@@ -54,10 +55,16 @@ export default function Question(props) {
 		// }
 	}
 
+	function setResult(result) {
+		console.log('Hej: ' + result)
+		props.setResult(result)
+	}
+
 	function handleClick(id) {
-		console.log('id = ' + id)
+		//console.log('id = ' + id)
 		const newSelectedAnswerId = id === selectedAnswerId ? 0 : id
 		setSelectedAnswerId(newSelectedAnswerId)
+
 		//props.setSelected(id)
 		// const btn = document.getElementById(
 		// 	`btn-${props.question.key}-${selectedAnswerId}`
@@ -73,7 +80,7 @@ export default function Question(props) {
 		// }
 	}
 
-	console.log(props.answers)
+	// console.log(props.answers)
 
 	const buttons = props.answers.map((ans) => (
 		// <button
