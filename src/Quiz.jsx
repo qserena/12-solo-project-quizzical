@@ -51,7 +51,7 @@ export default function Quiz() {
 			{ id: 3, answer: 'Mexico' },
 			{ id: 4, answer: 'France' },
 		]
-		for (let i = 0; i < 1; i++) {
+		for (let i = 0; i < 5; i++) {
 			newArr[i] = {
 				...results[i],
 				key: nanoid(),
@@ -105,6 +105,7 @@ export default function Quiz() {
 					) : (
 						<button
 							className="blue-btn footer-btn"
+							id="check-answers-btn"
 							onClick={() => setCheckResult(true)}
 						>
 							Check answers

@@ -56,8 +56,9 @@ export default function Question(props) {
 
 	function handleClick(id) {
 		console.log('id = ' + id)
-		setSelectedAnswerId(id)
-		props.setSelected(id)
+		const newSelectedAnswerId = id === selectedAnswerId ? 0 : id
+		setSelectedAnswerId(newSelectedAnswerId)
+		//props.setSelected(id)
 		// const btn = document.getElementById(
 		// 	`btn-${props.question.key}-${selectedAnswerId}`
 		// )
