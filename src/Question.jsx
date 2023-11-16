@@ -90,6 +90,7 @@ export default function Question(props) {
 		// 	{ans.answer}
 		// </button>
 		<QuizButton
+			key={ans.id}
 			answer={ans.answer}
 			isSelected={ans.id === selectedAnswerId}
 			handleClick={() => handleClick(ans.id)}

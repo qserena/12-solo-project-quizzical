@@ -84,7 +84,11 @@ export default function Quiz() {
 		// 	setSelected={(id) => setSelected(question.key, id)}
 		// 	selected={question.selectedId}
 		// />
-		<Question question={question} answers={question.answers} />
+		<Question
+			key={question.key}
+			question={question}
+			answers={question.answers}
+		/>
 	))
 
 	return (
@@ -93,7 +97,7 @@ export default function Quiz() {
 				<div className="quiz--questions">{questionElements}</div>
 				<div className="quiz--footer">
 					{checkResult ? (
-						<div className="score-container">
+						<>
 							<h3>You scored 3/5 correct answers</h3>
 							<button
 								className="blue-btn footer-btn"
@@ -101,7 +105,7 @@ export default function Quiz() {
 							>
 								Play again
 							</button>
-						</div>
+						</>
 					) : (
 						<button
 							className="blue-btn footer-btn"
