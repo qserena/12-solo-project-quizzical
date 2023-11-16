@@ -11,20 +11,31 @@ export default function Quiz() {
 	useEffect(() => {
 		let ignore = false
 
-		// fetch(
-		// 	'https://opentdb.com/api.php?amount=5&category=9&difficulty=medium&type=multiple'
-		// )
 		if (!checkResult) {
+			// fetch(
+
+			// 	'https://opentdb.com/api.php?amount=5&category=9&difficulty=medium&type=multiple'
+			// )
 			fetch('https://api.imgflip.com/get_memes')
-				.then((res) => res.json())
-				.then((data) => {
+				.then((response) => response.json())
+				.then((result) => {
 					if (!ignore) {
 						// setQuestions(data.results)
-						// composeQuestions(data.results)
-						composeQuestions(data.data.memes)
-						//console.log(data)
+						composeQuestions(result.data.memes)
+						//console.log(result.data.memes)
 					}
 				})
+			// .then((res) => {
+			// 	//console.log(res)
+			// 	res.json()
+			// })
+			// .then((data) => {
+			// 	if (!ignore) {
+			// 		// setQuestions(data.results)
+			// 		//composeQuestions(data.results)
+			// 		console.log(data)
+			// 	}
+			// })
 		}
 
 		return () => {
@@ -49,11 +60,12 @@ export default function Quiz() {
 		}
 		console.log(newArr)
 		setQuestions(newArr)
-		const selectedArr = newArr.map((item) => ({
-			key: item.key,
-			id: 0,
-		}))
-		setSelectedAnswers(selectedArr)
+		//setQuestions(results)
+		// const selectedArr = newArr.map((item) => ({
+		// 	key: item.key,
+		// 	id: 0,
+		// }))
+		// setSelectedAnswers(selectedArr)
 	}
 
 	function startNewQuiz() {
@@ -65,12 +77,14 @@ export default function Quiz() {
 	}
 
 	const questionElements = questions.map((question) => (
-		<Question
-			key={question.key}
-			question={question}
-			answers={question.answers}
-			setSelected={(id) => setSelected(question.key, id)}
-		/>
+		// <Question
+		// 	key={question.key}
+		// 	question={question}
+		// 	answers={question.answers}
+		// 	setSelected={(id) => setSelected(question.key, id)}
+		// 	selected={question.selectedId}
+		// />
+		<Question question={question} answers={question.answers} />
 	))
 
 	return (
