@@ -1,35 +1,26 @@
 import { useState, useEffect } from 'react'
-import he from 'he'
 import { nanoid } from 'nanoid'
 import Question from './Question'
 
 export default function Quiz() {
 	const [checkResult, setCheckResult] = useState(false)
 	const [questions, setQuestions] = useState([])
-	const [selectedAnswers, setSelectedAnswers] = useState([])
+	const [score, setScore] = useState('')
 
 	useEffect(() => {
 		let ignore = false
 
-		if (!checkResult) {
+		if (!checkResult && !ignore) {
+			ignore = true
+			console.log('GO')
 			fetch(
 				'https://opentdb.com/api.php?amount=5&category=9&difficulty=medium&type=multiple'
 			)
 				.then((response) => response.json())
 				.then((data) => {
-					if (!ignore) {
-						console.log(data)
-						composeQuestions(data.results)
-					}
+					console.log(data)
+					composeQuestions(data.results)
 				})
-
-			// fetch('https://api.imgflip.com/get_memes')
-			// 	.then((response) => response.json())
-			// 	.then((result) => {
-			// 		if (!ignore) {
-			// 			composeQuestions(result.data.memes)
-			// 		}
-			// 	})
 		}
 
 		return () => {
@@ -38,27 +29,10 @@ export default function Quiz() {
 	}, [checkResult])
 
 	function composeQuestions(results) {
-		console.log(results)
+		console.log('compose: ' + results)
 		if (!results?.length) {
 			return
 		}
-		// let newArr = []
-		// const answerz = [
-		// 	{ id: 1, answer: 'Italy' },
-		// 	{ id: 2, answer: 'Portugal' },
-		// 	{ id: 3, answer: 'Mexico' },
-		// 	{ id: 4, answer: 'France' },
-		// ]
-		// for (let i = 0; i < 5; i++) {
-		// 	newArr[i] = {
-		// 		...results[i],
-		// 		key: nanoid(),
-		// 		answers: answerz,
-		// 		result: false,
-		// 	}
-		// }
-		// //console.log(newArr)
-		// setQuestions(newArr)
 
 		let newArr = []
 
@@ -69,42 +43,40 @@ export default function Quiz() {
 				result: false,
 			}
 		}
-		//console.log(newArr)
+
 		setQuestions(newArr)
 	}
 
 	function checkResults() {
 		setCheckResult(true)
+		let sum = 0
 		for (let q of questions) {
-			console.log(q.result)
+			if (q.result) {
+				sum++
+			}
 		}
+		console.log('sum: ' + sum)
+		setScore(sum)
 	}
 
 	function startNewQuiz() {
 		setCheckResult(false)
 	}
 
-	function setSelected(key, selectedAnswerId) {
-		console.log(key + ' ' + selectedAnswerId)
-	}
-
-	function setResult(id, result) {
-		//console.log('id: ' + id + ' result: ' + result)
+	function setResult(key, result) {
+		console.log('key: ' + key + ' result: ' + result)
+		questions.forEach((q) => {
+			if (q.key === key) {
+				q.result = result
+			}
+		})
 	}
 
 	const questionElements = questions.map((question) => (
-		// <Question
-		// 	key={question.key}
-		// 	question={question}
-		// 	answers={question.answers}
-		// 	result={question.result}
-		// 	setResult={(result) => setResult(question.id, result)}
-		// />
-
 		<Question
 			key={question.key}
 			question={question}
-			setResult={(result) => setResult(question.id, result)}
+			setResult={(result) => setResult(question.key, result)}
 			evaluateAnswers={checkResult}
 		/>
 	))
@@ -116,7 +88,10 @@ export default function Quiz() {
 				<div className="quiz--footer">
 					{checkResult ? (
 						<>
-							<h3>You scored 3/5 correct answers</h3>
+							<h3>
+								You scored {score}/{questions.length} correct
+								answers
+							</h3>
 							<button
 								className="blue-btn footer-btn"
 								onClick={startNewQuiz}

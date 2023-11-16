@@ -13,8 +13,6 @@ export default function QuizButton(props) {
 			className="answer-btn"
 			style={styles}
 			onClick={props.handleClick}
-			// id={`btn-${props.question.key}-${ans.id}`}
-			// onClick={() => toggleSelected(ans.id)}
 		>
 			{props.answer}
 		</button>
