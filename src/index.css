@@ -165,5 +165,6 @@ hr {
 @media (min-width < 550px) {
 	main {
 		width: 1vw;
+		background-color: aquamarine;
 	}
 }
