@@ -41,6 +41,7 @@ export default function Question(props) {
 			key={ans.key}
 			answer={he.decode(ans.answer)}
 			isSelected={ans.key === selectedAnswerKey}
+			isCorrectAnswer={ans.key === correctAnswerKey}
 			handleClick={() => handleClick(ans.key)}
 			evaluateAnswers={props.evaluateAnswers}
 		/>
