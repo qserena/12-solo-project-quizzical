@@ -9,7 +9,6 @@ export default function Question(props) {
 	const [correctAnswerKey, setCorrectAnswerKey] = useState('')
 
 	useEffect(() => {
-		console.log('Saltis!')
 		const answerArray = props.question.incorrect_answers.map((ans) => ({
 			key: nanoid(),
 			answer: ans,
@@ -25,18 +24,14 @@ export default function Question(props) {
 	}, [])
 
 	useEffect(() => {
-		setResult(selectedAnswerKey === correctAnswerKey)
+		setResult(selectedAnswerKey && selectedAnswerKey === correctAnswerKey)
 	}, [selectedAnswerKey])
 
 	function setResult(result) {
-		//console.log('Hej: ' + result)
 		props.setResult(result)
 	}
 
 	function handleClick(key) {
-		// console.log('key = ' + key)
-		// console.log('selectedAnswerKey = ' + selectedAnswerKey)
-		// console.log('correctAnswerKey = ' + correctAnswerKey)
 		const newSelectedAnswerKey = key === selectedAnswerKey ? 0 : key
 		setSelectedAnswerKey(newSelectedAnswerKey)
 	}

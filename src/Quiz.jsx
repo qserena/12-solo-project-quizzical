@@ -3,14 +3,14 @@ import { nanoid } from 'nanoid'
 import Question from './Question'
 
 export default function Quiz() {
-	const [checkResult, setCheckResult] = useState(false)
+	const [checkResultView, setCheckResultView] = useState(false)
 	const [questions, setQuestions] = useState([])
-	const [score, setScore] = useState('')
+	const [score, setScore] = useState(0)
 
 	useEffect(() => {
 		let ignore = false
 
-		if (!checkResult && !ignore) {
+		if (!checkResultView && !ignore) {
 			ignore = true
 			console.log('GO')
 			fetch(
@@ -26,7 +26,7 @@ export default function Quiz() {
 		return () => {
 			ignore = true
 		}
-	}, [checkResult])
+	}, [checkResultView])
 
 	function composeQuestions(results) {
 		console.log('compose: ' + results)
@@ -47,8 +47,8 @@ export default function Quiz() {
 		setQuestions(newArr)
 	}
 
-	function checkResults() {
-		setCheckResult(true)
+	function evaluateAnswers() {
+		setCheckResultView(true)
 		let sum = 0
 		for (let q of questions) {
 			if (q.result) {
@@ -60,7 +60,7 @@ export default function Quiz() {
 	}
 
 	function startNewQuiz() {
-		setCheckResult(false)
+		setCheckResultView(false)
 	}
 
 	function setResult(key, result) {
@@ -77,7 +77,7 @@ export default function Quiz() {
 			key={question.key}
 			question={question}
 			setResult={(result) => setResult(question.key, result)}
-			evaluateAnswers={checkResult}
+			evaluateAnswers={checkResultView}
 		/>
 	))
 
@@ -86,7 +86,7 @@ export default function Quiz() {
 			<div className="quiz--inner-container">
 				<div className="quiz--questions">{questionElements}</div>
 				<div className="quiz--footer">
-					{checkResult ? (
+					{checkResultView ? (
 						<>
 							<h3>
 								You scored {score}/{questions.length} correct
@@ -103,7 +103,7 @@ export default function Quiz() {
 						<button
 							className="blue-btn footer-btn"
 							id="check-answers-btn"
-							onClick={checkResults}
+							onClick={evaluateAnswers}
 						>
 							Check answers
 						</button>
