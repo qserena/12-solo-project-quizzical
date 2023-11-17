@@ -13,7 +13,7 @@ export default function Quiz() {
 		if (!checkResultView && !ignore) {
 			ignore = true
 			fetch(
-				'https://opentdb.com/api.php?amount=5&category=9&difficulty=medium&type=multiple'
+				'https://opentdb.com/api.php?amount=5&category=9&difficulty=easy&type=multiple'
 			)
 				.then((response) => response.json())
 				.then((data) => {
