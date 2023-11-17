@@ -1,27 +1,19 @@
 export default function QuizButton(props) {
-	// if evaluate
-	//     if correctAnswer
-	//         style = green
-	//      else if selected
-	//          style = red
-	//       else
-	//          style = gray
-	//  else
-	//          style = normal
-
 	let styles = ''
 	if (props.evaluateAnswers) {
 		if (props.isCorrectAnswer) {
 			styles = {
-				backgroundColor: 'green',
+				backgroundColor: '#94D7A2', // green
+				border: 'none',
 			}
 		} else if (props.isSelected) {
 			styles = {
-				backgroundColor: 'red',
+				backgroundColor: '#F8BCBC', // red
+				border: 'none',
 			}
 		} else {
 			styles = {
-				backgroundColor: 'gray',
+				opacity: '0.5',
 			}
 		}
 	} else {
