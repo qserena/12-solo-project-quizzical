@@ -12,13 +12,11 @@ export default function Quiz() {
 
 		if (!checkResultView && !ignore) {
 			ignore = true
-			console.log('GO')
 			fetch(
 				'https://opentdb.com/api.php?amount=5&category=9&difficulty=medium&type=multiple'
 			)
 				.then((response) => response.json())
 				.then((data) => {
-					console.log(data)
 					composeQuestions(data.results)
 				})
 		}
@@ -29,7 +27,6 @@ export default function Quiz() {
 	}, [checkResultView])
 
 	function composeQuestions(results) {
-		console.log('compose: ' + results)
 		if (!results?.length) {
 			return
 		}
@@ -55,7 +52,6 @@ export default function Quiz() {
 				sum++
 			}
 		}
-		console.log('sum: ' + sum)
 		setScore(sum)
 	}
 
@@ -64,7 +60,6 @@ export default function Quiz() {
 	}
 
 	function setResult(key, result) {
-		console.log('key: ' + key + ' result: ' + result)
 		questions.forEach((q) => {
 			if (q.key === key) {
 				q.result = result

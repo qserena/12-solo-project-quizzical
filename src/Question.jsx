@@ -17,9 +17,12 @@ export default function Question(props) {
 			key: nanoid(),
 			answer: props.question.correct_answer,
 		}
-
 		setCorrectAnswerKey(correctAnswer.key)
-		answerArray.push(correctAnswer)
+
+		// Insert correctAnswer at random position
+		const numberOfAnswers = answerArray.length + 1
+		const randomIndex = Math.floor(numberOfAnswers * Math.random())
+		answerArray.splice(randomIndex, 0, correctAnswer)
 		setAnswers(answerArray)
 	}, [])
 
