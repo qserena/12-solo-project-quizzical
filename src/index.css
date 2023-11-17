@@ -162,9 +162,12 @@ hr {
 	padding-bottom: 2em;
 }
 
-@media (min-width < 550px) {
+@media (width < 550px) {
 	main {
-		width: 1vw;
-		background-color: aquamarine;
+		width: 100%;
+	}
+
+	.quiz--inner-container {
+		margin: 30px 20px 10px 20px;
 	}
 }
