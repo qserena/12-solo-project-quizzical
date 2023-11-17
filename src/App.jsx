@@ -3,9 +3,6 @@ import Quiz from './Quiz'
 
 function App() {
 	const [showQuiz, setShowQuiz] = useState(false)
-	function playAgain() {
-		setShowQuiz(false)
-	}
 
 	return (
 		<main>
