@@ -1,17 +1,20 @@
 import { useState, useEffect } from 'react'
 import { nanoid } from 'nanoid'
+import Confetti from 'react-confetti'
 import Question from './Question'
 
 export default function Quiz() {
 	const [checkResultView, setCheckResultView] = useState(false)
 	const [questions, setQuestions] = useState([])
 	const [score, setScore] = useState(0)
+	const [fullScore, setFullScore] = useState(false)
 
 	useEffect(() => {
 		let ignore = false
 
 		if (!checkResultView && !ignore) {
 			ignore = true
+			setScore(0)
 			fetch(
 				'https://opentdb.com/api.php?amount=5&category=9&difficulty=easy&type=multiple'
 			)
@@ -25,6 +28,14 @@ export default function Quiz() {
 			ignore = true
 		}
 	}, [checkResultView])
+
+	useEffect(() => {
+		if (score > 2 && score === questions.length) {
+			setFullScore(true)
+		} else {
+			setFullScore(false)
+		}
+	}, [score])
 
 	function composeQuestions(results) {
 		if (!results?.length) {
@@ -78,6 +89,7 @@ export default function Quiz() {
 
 	return (
 		<div className="quiz--container">
+			{fullScore && <Confetti />}
 			<div className="quiz--inner-container">
 				<div className="quiz--questions">{questionElements}</div>
 				<div className="quiz--footer">
