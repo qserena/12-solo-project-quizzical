@@ -161,3 +161,9 @@ hr {
 	margin-top: 1.25em;
 	padding-bottom: 2em;
 }
+
+@media (min-width < 550px) {
+	main {
+		width: 1vw;
+	}
+}
