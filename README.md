@@ -5,7 +5,7 @@ This app calls the [Open Trivia Database](https://opentdb.com/) and fetches five
 
 The user selects answers and clicks on "Check answers" for evaluation.
 
-At score 5/5 a special graphical firework will appear on the screen!
+At a score of 5/5 a special graphical firework will appear on the screen!
 
 ![Screen shot of Quizzical app](./quizzical.png)
 
