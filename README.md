@@ -17,6 +17,6 @@ At a score of 5/5 a special graphical firework will appear on the screen!
 
 ## Live link
 Quizzical is deployed here:
-[https://toms-quizzical.netlify.app/](https://toms-quizzical.netlify.app/))
+[https://toms-quizzical.netlify.app](https://toms-quizzical.netlify.app)
 
 Please feel free to click around and explore!
