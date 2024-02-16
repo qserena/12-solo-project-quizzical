@@ -1,8 +1,20 @@
-# React + Vite
+# Quizzical - A Quiz with five random questions
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Description
+This app calls the [Open Trivia Database](https://opentdb.com/)
 
-Currently, two official plugins are available:
+![Screen shot of Quizzical app](./quizzical.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technologies
+- HTML
+- CSS
+- JavaScript
+- React
+- React Router 6
+- Firebase
+
+## Live link
+VanLife is deployed here:
+[https://serenander-vanlife.netlify.app](https://serenander-vanlife.netlify.app/)
+
+Please feel free to click around and explore!
