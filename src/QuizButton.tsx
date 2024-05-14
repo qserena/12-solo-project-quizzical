@@ -8,7 +8,7 @@ type QuizButtonProps = {
 }
 
 export default function QuizButton(props: QuizButtonProps) {
-    let styles = ''
+    let styles: React.CSSProperties = {}
     if (props.evaluateAnswers) {
         if (props.isCorrectAnswer) {
             styles = {
