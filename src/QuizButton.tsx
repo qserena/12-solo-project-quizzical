@@ -1,4 +1,13 @@
-export default function QuizButton(props) {
+type QuizButtonProps = {
+    key: string
+    answer: string
+    isSelected: boolean
+    isCorrectAnswer: boolean
+    handleClick: () => void
+    evaluateAnswers: boolean
+}
+
+export default function QuizButton(props: QuizButtonProps) {
     let styles = ''
     if (props.evaluateAnswers) {
         if (props.isCorrectAnswer) {
