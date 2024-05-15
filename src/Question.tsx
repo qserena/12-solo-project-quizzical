@@ -20,7 +20,6 @@ type AnswerType = {
 }
 
 export default function Question({
-    key,
     question,
     evaluateAnswers,
     setQuestionResult,

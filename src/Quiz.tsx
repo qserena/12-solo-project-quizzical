@@ -5,17 +5,16 @@ import Question from './Question'
 
 export default function Quiz() {
     const [checkResultView, setCheckResultView] = useState(false)
-    const [questions, setQuestions] = useState<QuestionData[]>([])
+    const [questions, setQuestions] = useState<QuestionItem[]>([])
     const [score, setScore] = useState(0)
     const [fullScore, setFullScore] = useState(false)
 
-    type QuestionData = {
+    type QuestionItem = {
         key: string
-        question: {
-            key: string
-            question: string
-        }
-        result?: boolean
+        question: string
+        correct_answer: string
+        incorrect_answers: string[]
+        result: boolean
     }
 
     useEffect(() => {
@@ -29,7 +28,7 @@ export default function Quiz() {
             )
                 .then((response) => response.json())
                 .then((data) => {
-                    console.log(data.results)
+                    // console.log(data.results)
                     composeQuestions(data.results)
                 })
                 .catch((err) => console.log(err))
@@ -48,12 +47,12 @@ export default function Quiz() {
         }
     }, [score])
 
-    function composeQuestions(results: QuestionData[]) {
+    function composeQuestions(results: QuestionItem[]) {
         if (!results?.length) {
             return
         }
 
-        let newArr = []
+        let newArr: QuestionItem[] = []
 
         for (let i = 0; i < results.length; i++) {
             newArr[i] = {
@@ -89,11 +88,11 @@ export default function Quiz() {
         })
     }
 
-    const questionElements = questions.map((question) => (
+    const questionElements = questions.map((questionItem) => (
         <Question
-            key={question.key}
-            question={question}
-            setQuestionResult={(result) => setResult(question.key, result)}
+            key={questionItem.key}
+            question={questionItem}
+            setQuestionResult={(result) => setResult(questionItem.key, result)}
             evaluateAnswers={checkResultView}
         />
     ))
