@@ -14,6 +14,7 @@ At a score of 5/5 a special graphical firework will appear on the screen!
 - HTML
 - CSS
 - JavaScript
+- TypeScript
 - React
 
 ## Live link
